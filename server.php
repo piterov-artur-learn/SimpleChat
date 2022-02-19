@@ -1,5 +1,5 @@
 <?php
-const PORT = "8080";
+define("PORT", $argv[1]);
 require_once 'classes/Chat.php';
 
 $chat = new Chat();
@@ -52,5 +52,3 @@ while (true) {
         }
     }
 }
-
-socket_close($socket);
