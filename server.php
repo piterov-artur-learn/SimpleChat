@@ -23,7 +23,7 @@ while (true) {
         $clientSocketArray[] = $newSocket;
 
         $header = socket_read($newSocket, 1024);
-        $chat->sendHeaders($header, $newSocket, "localhost/simplechat", PORT);
+        $chat->sendHeaders($header, $newSocket, "localhost", PORT);
 
         socket_getpeername($newSocket, $clientIpAddress);
         echo $clientIpAddress . PHP_EOL;
