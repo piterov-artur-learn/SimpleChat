@@ -8,8 +8,8 @@ if (isset($_POST['login']) && isset($_POST['password']) && isset($_POST['name'])
 if (empty($login) || empty($password) || empty($name)) {
     die("Вы не ввели все данные!");
 }
-$db = mysqli_connect("localhost", $argv[1], $argv[2]);
-mysqli_select_db($db, $argv[3]);
+$db = mysqli_connect("localhost", "homestead", "secret");
+mysqli_select_db($db, "SimpleChat");
 $result = mysqli_query($db, "SELECT id FROM users WHERE login='$login'");
 $myRow = mysqli_fetch_array($result);
 if (!empty($myRow['id'])) {

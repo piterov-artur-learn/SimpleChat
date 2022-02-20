@@ -7,8 +7,8 @@ if (isset($_POST['login']) && isset($_POST['password'])) {
 if (empty($login) || empty($password)) {
     die("Вы не ввели все данные!");
 }
-$db = mysqli_connect("localhost", $argv[1], $argv[2]);
-mysqli_select_db($db, $argv[3]);
+$db = mysqli_connect("localhost", "homestead", "secret");
+mysqli_select_db($db, "SimpleChat");
 $result = mysqli_query($db, "SELECT * FROM users WHERE login='$login'");
 $myRow = mysqli_fetch_array($result);
 if (empty($myRow['password'])) {
