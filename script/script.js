@@ -3,7 +3,7 @@ const message = (text) => {
 }
 
 $(document).ready(() => {
-    let socket = new WebSocket("ws://localhost:8080/simplechat/server.php");
+    let socket = new WebSocket(`wss://${location.href}:80`);
 
     socket.onopen = () => {
         message("<p>Соединение установлено</p>");

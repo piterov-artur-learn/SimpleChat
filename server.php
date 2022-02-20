@@ -1,5 +1,4 @@
 <?php
-define("PORT", $argv[1]);
 require_once 'classes/Chat.php';
 
 $chat = new Chat();
@@ -7,7 +6,7 @@ $chat = new Chat();
 $socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
 
 socket_set_option($socket, SOL_SOCKET, SO_REUSEADDR, 1);
-socket_bind($socket, '127.0.0.1', PORT);
+socket_bind($socket, $_SERVER['SERVER_ADDR'], $_SERVER['SERVER_PORT']);
 
 socket_listen($socket);
 
@@ -23,7 +22,7 @@ while (true) {
         $clientSocketArray[] = $newSocket;
 
         $header = socket_read($newSocket, 1024);
-        $chat->sendHeaders($header, $newSocket, "localhost", PORT);
+        $chat->sendHeaders($header, $newSocket, $_SERVER['SERVER_ADDR'], $_SERVER['SERVER_PORT']);
 
         socket_getpeername($newSocket, $clientIpAddress);
         echo $clientIpAddress . PHP_EOL;
